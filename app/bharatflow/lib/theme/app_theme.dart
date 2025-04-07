@@ -17,7 +17,7 @@ class AppTheme {
   // Light Theme
   static final ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    colorScheme: ColorScheme.light(
+    colorScheme: ColorScheme.dark(
       primary: primaryColor,
       secondary: secondaryColor,
       tertiary: tertiaryColor,

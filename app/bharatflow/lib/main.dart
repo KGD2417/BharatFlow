@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
       title: 'BharatFlow',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        brightness: Brightness.light,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
         cardTheme: CardTheme(
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       home: const RoleSelectionPage(),
     );
   }
