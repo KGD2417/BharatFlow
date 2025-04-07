@@ -17,10 +17,46 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     final isDesktop = MediaQuery.of(context).size.width >= 1100;
-    final isTablet = MediaQuery.of(context).size.width >= 650 && MediaQuery.of(context).size.width < 1100;
+    final isTablet =
+        MediaQuery.of(context).size.width >= 650 && MediaQuery.of(context).size.width < 1100;
+
+    final stats = [
+      {
+        "title": "Travel time per 10 km",
+        "value": "18 min 20 s",
+        "textcolor": Colors.blueAccent,
+        "subtext": "2 min 30 s above what's usual at this time",
+        "subtextColor": Color(0xFF04063f),
+        "bgColor": Colors.white,
+      },
+      {
+        "title": "Congestion level",
+        "value": "0%",
+        "textcolor": Colors.blueAccent,
+        "subtext": "0% usual for this time",
+        "subtextColor": Color(0xFF04063f),
+        "bgColor": Colors.white,
+      },
+      {
+        "title": "Speed",
+        "value": "32.7 km/h",
+        "textcolor": Colors.blueAccent,
+        "subtext": "5.2 km/h below what's usual at this time",
+        "subtextColor": Color(0xFF04063f),
+        "bgColor": Colors.white,
+      },
+      {
+        "title": "Traffic jams",
+        "value": "4\n1.7 km",
+        "textcolor": Colors.blueAccent,
+        "subtext": "Total count   Total length",
+        "subtextColor": Color(0xFF04063f),
+        "bgColor": Colors.white,
+      },
+    ];
 
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -30,55 +66,86 @@ class _DashboardPageState extends State<DashboardPage> {
               'Dashboard Overview',
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               'Monitor and manage traffic congestion across the city',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Colors.white70,
+                color: Colors.black,
               ),
             ),
             const SizedBox(height: 24),
 
             // Stats Cards
-            GridView.count(
-              crossAxisCount: isDesktop ? 4 : (isTablet ? 2 : 1),
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
+            GridView.builder(
+              padding: const EdgeInsets.all(0),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: isDesktop
+                    ? 4
+                    : isTablet
+                    ? 2
+                    : 1,
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
+                childAspectRatio: 1.6,
+              ),
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              children: const [
-                StatCard(
-                  title: 'Average Congestion',
-                  value: '42%',
-                  icon: Icons.speed,
-                  iconColor: Colors.orange,
-                  backgroundColor: Color(0xFFFFF3E0),
-                ),
-                StatCard(
-                  title: 'Signals Monitored',
-                  value: '128',
-                  icon: Icons.traffic,
-                  iconColor: Colors.green,
-                  backgroundColor: Color(0xFFE8F5E9),
-                ),
-                StatCard(
-                  title: 'Critical Zones',
-                  value: '3',
-                  icon: Icons.warning,
-                  iconColor: Colors.red,
-                  backgroundColor: Color(0xFFFFEBEE),
-                ),
-                StatCard(
-                  title: 'Last Update',
-                  value: '2 min ago',
-                  icon: Icons.update,
-                  iconColor: Colors.blue,
-                  backgroundColor: Color(0xFFE3F2FD),
-                ),
-              ],
+              itemCount: stats.length,
+              itemBuilder: (context, index) {
+                final item = stats[index];
+                return Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: item["bgColor"] as Color,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: 2,
+                        blurRadius: 8,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        item["title"] as String,
+                        style: TextStyle(
+                          color: item["bgColor"] == Colors.white ? Colors.black : Colors.white70,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        item["value"] as String,
+                        style: TextStyle(
+                          color: item["textcolor"] != null
+                              ? item["textcolor"] as Color
+                              : (item["bgColor"] == Colors.white ? Colors.black : Colors.white),
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          height: 1.2,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        item["subtext"] as String,
+                        style: TextStyle(
+                          color: item["subtextColor"] as Color,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
 
             const SizedBox(height: 24),
@@ -130,48 +197,9 @@ class _DashboardPageState extends State<DashboardPage> {
 
             const SizedBox(height: 24),
 
-            // Traffic Incidents Section
-            // Card(
-            //   color: const Color(0xFF04063f), // Dark card color
-            //   elevation: 8,
-            //   shape: RoundedRectangleBorder(
-            //     borderRadius: BorderRadius.circular(16),
-            //   ),
-            //   child: Padding(
-            //     padding: const EdgeInsets.all(24),
-            //     child: Column(
-            //       crossAxisAlignment: CrossAxisAlignment.start,
-            //       children: [
-            //         Row(
-            //           children: [
-            //             // const Text(
-            //             //   'Traffic Incidents',
-            //             //   style: TextStyle(
-            //             //     fontWeight: FontWeight.bold,
-            //             //     fontSize: 22,
-            //             //     color: Colors.white,
-            //             //   ),
-            //             // ),
-            //             //
-            //
-            //             const Spacer(),
-            //             TextButton.icon(
-            //               style: TextButton.styleFrom(
-            //                 backgroundColor: Colors.blueAccent.withOpacity(0.2),
-            //                 shape: RoundedRectangleBorder(
-            //                   borderRadius: BorderRadius.circular(8),
-            //                 ),
-            //               ),
-            //               icon: const Icon(Icons.filter_list, color: Colors.blueAccent),
-            //               label: const Text('Filter', style: TextStyle(color: Colors.blueAccent)),
-            //               onPressed: () {},
-            //             ),
-            //           ],
-            //         ),
-            //
-            //         const SizedBox(height: 24),
+            // Traffic Incidents and Extra Chart
             Card(
-              color: const Color(0xFF04063f), // Dark card color
+              color: const Color(0xFF04063f),
               elevation: 8,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
@@ -181,8 +209,6 @@ class _DashboardPageState extends State<DashboardPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 24),
-
                     TextButton.icon(
                       style: TextButton.styleFrom(
                         backgroundColor: Colors.blueAccent.withOpacity(0.2),
@@ -194,9 +220,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       label: const Text('Filter', style: TextStyle(color: Colors.blueAccent)),
                       onPressed: () {},
                     ),
-
-                    const SizedBox(height: 24), // Add some space after the button
-
+                    const SizedBox(height: 24),
                     SizedBox(
                       height: 400,
                       width: double.infinity,
@@ -214,11 +238,11 @@ class _DashboardPageState extends State<DashboardPage> {
                     ),
                     const SizedBox(height: 24),
 
-            // Recent Alerts - Only in heatmap view
+                    // Recent Alerts - Only in heatmap view
                     if (_currentMapView == MapViewType.heatmap)
                       Card(
                         elevation: 2,
-                        color: const Color(0xFF1A1C4A),
+                        color: const Color(0xFF0040BD),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),

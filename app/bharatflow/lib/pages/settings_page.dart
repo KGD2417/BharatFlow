@@ -23,6 +23,8 @@ class _SettingsPageState extends State<SettingsPage> {
     final theme = Theme.of(context);
     
     return Scaffold(
+        backgroundColor: Color(0xffffffff),
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -32,13 +34,14 @@ class _SettingsPageState extends State<SettingsPage> {
               'System Settings',
               style: theme.textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               'Configure traffic management system settings',
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.7),
+                color: Colors.black,
               ),
             ),
             const SizedBox(height: 24),
@@ -48,6 +51,7 @@ class _SettingsPageState extends State<SettingsPage> {
               'Traffic Control',
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
             ),
             const SizedBox(height: 16),
@@ -99,7 +103,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             
             const SizedBox(height: 24),
-            const Divider(),
+            const Divider(color: Colors.black),
             const SizedBox(height: 24),
             
             // Notification Settings
@@ -107,6 +111,7 @@ class _SettingsPageState extends State<SettingsPage> {
               'Notifications',
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
+                color:Colors.black,
               ),
             ),
             const SizedBox(height: 16),
@@ -125,6 +130,7 @@ class _SettingsPageState extends State<SettingsPage> {
             SettingsCard(
               title: 'Data Sharing',
               description: 'Share anonymous traffic data with city planning',
+
               value: _dataSharing,
               onChanged: (value) {
                 setState(() {
@@ -135,14 +141,16 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             
             const SizedBox(height: 24),
-            const Divider(),
+            const Divider(color: Colors.black),
             const SizedBox(height: 24),
             
             // Data Management
             Text(
               'Data Management',
+
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
+                color:Colors.black,
               ),
             ),
             const SizedBox(height: 16),
@@ -175,13 +183,14 @@ class _SettingsPageState extends State<SettingsPage> {
                                 'Export Traffic Data',
                                 style: theme.textTheme.titleMedium?.copyWith(
                                   fontWeight: FontWeight.bold,
+
                                 ),
                               ),
                               const SizedBox(height: 4),
                               Text(
                                 'Download traffic data in CSV or JSON format',
                                 style: theme.textTheme.bodySmall?.copyWith(
-                                  color: theme.colorScheme.onSurface.withOpacity(0.7),
+
                                 ),
                               ),
                             ],
@@ -245,7 +254,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           ),
                           child: Icon(
                             Icons.delete_outline,
-                            color: theme.colorScheme.error,
+                            color: Colors.white,
                           ),
                         ),
                         const SizedBox(width: 16),
@@ -257,6 +266,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                 'Clear Historical Data',
                                 style: theme.textTheme.titleMedium?.copyWith(
                                   fontWeight: FontWeight.bold,
+
                                 ),
                               ),
                               const SizedBox(height: 4),

@@ -67,7 +67,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
               TextSpan(
                 text: 'Bharat',
                 style: TextStyle(
-                  color: const Color(0xFF3243f5),
+                  color: const Color(0xFF04063f),
                   fontWeight: FontWeight.bold,
                   fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
                 ),
@@ -75,7 +75,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
               TextSpan(
                 text: 'Flow',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.blueAccent,
                   fontWeight: FontWeight.bold,
                   fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
                 ),
@@ -83,7 +83,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
             ],
           ),
         ),
-        backgroundColor: const Color(0xFF04063f),
+        backgroundColor: const Color(0xffffffff),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications_outlined, color: Colors.white),

@@ -19,7 +19,7 @@ class AppSidebar extends StatelessWidget {
       selectedIndex: selectedIndex,
       onDestinationSelected: onItemSelected,
       elevation: isDesktop ? 0 : 1,
-      backgroundColor: const Color(0xFF04063f),
+      backgroundColor: const Color(0xffffffff),
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 28, 16, 16),
@@ -30,7 +30,7 @@ class AppSidebar extends StatelessWidget {
                 height: 40,
                 decoration: BoxDecoration(
                   color: const Color(0xFF3243f5),
-                  borderRadius: BorderRadius.circular(8),
+                  // borderRadius: BorderRadius.circular(0),
                 ),
                 child: const Icon(
                   Icons.traffic,
@@ -44,7 +44,7 @@ class AppSidebar extends StatelessWidget {
                     TextSpan(
                       text: 'Admin',
                       style: TextStyle(
-                        color: Color(0xFF3243f5),
+                        color: Color(0xFF04063f),
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
@@ -52,7 +52,7 @@ class AppSidebar extends StatelessWidget {
                     TextSpan(
                       text: 'Panel',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
@@ -64,39 +64,39 @@ class AppSidebar extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        const Divider(color: Colors.white24),
+        const Divider(color: Colors.black),
         const SizedBox(height: 8),
         NavigationDrawerDestination(
-          icon: const Icon(Icons.dashboard_outlined, color: Colors.white70),
-          selectedIcon: const Icon(Icons.dashboard, color: Colors.white),
-          label: const Text('Dashboard', style: TextStyle(color: Colors.white)),
+          icon: const Icon(Icons.dashboard_outlined, color: Colors.black),
+          selectedIcon: const Icon(Icons.dashboard, color: Colors.black),
+          label: const Text('Dashboard', style: TextStyle(color: Colors.black)),
         ),
         NavigationDrawerDestination(
-          icon: const Icon(Icons.map_outlined, color: Colors.white70),
-          selectedIcon: const Icon(Icons.map, color: Colors.white),
-          label: const Text('Heatmap Control', style: TextStyle(color: Colors.white)),
+          icon: const Icon(Icons.map_outlined, color: Colors.black),
+          selectedIcon: const Icon(Icons.map, color: Colors.black),
+          label: const Text('Heatmap Control', style: TextStyle(color: Colors.black)),
         ),
         NavigationDrawerDestination(
-          icon: const Icon(Icons.analytics_outlined, color: Colors.white70),
-          selectedIcon: const Icon(Icons.analytics, color: Colors.white),
-          label: const Text('Analytics', style: TextStyle(color: Colors.white)),
+          icon: const Icon(Icons.analytics_outlined, color: Colors.black),
+          selectedIcon: const Icon(Icons.analytics, color: Colors.black),
+          label: const Text('Analytics', style: TextStyle(color: Colors.black)),
         ),
         NavigationDrawerDestination(
-          icon: const Icon(Icons.settings_outlined, color: Colors.white70),
-          selectedIcon: const Icon(Icons.settings, color: Colors.white),
-          label: const Text('Settings', style: TextStyle(color: Colors.white)),
+          icon: const Icon(Icons.settings_outlined, color: Colors.black),
+          selectedIcon: const Icon(Icons.settings, color: Colors.black),
+          label: const Text('Settings', style: TextStyle(color: Colors.black)),
         ),
         const SizedBox(height: 8),
-        const Divider(color: Colors.white24),
+        const Divider(color: Colors.black),
         const SizedBox(height: 8),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Text(
-            'System Status',
-            style: theme.textTheme.titleSmall?.copyWith(
-              color: Colors.white70,
-            ),
-          ),
+          // child: Text(
+          //   'System Status',
+          //   style: theme.textTheme.titleSmall?.copyWith(
+          //     color: Colors.black,
+          //   ),
+          // ),
         ),
         const SizedBox(height: 8),
         Padding(
@@ -107,15 +107,15 @@ class AppSidebar extends StatelessWidget {
                 width: 8,
                 height: 8,
                 decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.circular(4),
+                  // color: Colors.green,
+                  // borderRadius: BorderRadius.circular(4),
                 ),
               ),
               const SizedBox(width: 8),
-              const Text(
-                'All Systems Operational',
-                style: TextStyle(color: Colors.white),
-              ),
+              // const Text(
+              //   'All Systems Operational',
+              //   style: TextStyle(color: Colors.black),
+              // ),
             ],
           ),
         ),
@@ -127,7 +127,7 @@ class AppSidebar extends StatelessWidget {
               const Icon(
                 Icons.account_circle,
                 size: 32,
-                color: Colors.white70,
+                color: Colors.black,
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -138,14 +138,14 @@ class AppSidebar extends StatelessWidget {
                     const Text(
                       'Admin User',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
                       'admin@bharatflow.com',
                       style: TextStyle(
-                        color: Colors.white70,
+                        color: Colors.black,
                         fontSize: 12,
                       ),
                     ),
@@ -153,7 +153,7 @@ class AppSidebar extends StatelessWidget {
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.logout, size: 20, color: Colors.white70),
+                icon: const Icon(Icons.logout, size: 20, color: Colors.black),
                 onPressed: () {},
               ),
             ],
