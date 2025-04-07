@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:bharatflow/pages/home_page.dart';
 import 'package:bharatflow/pages/register_page.dart';
 
 class SignInPage extends StatefulWidget {
@@ -20,7 +21,7 @@ class _SignInPageState extends State<SignInPage> {
     return Scaffold(
       body: Stack(
         children: [
-          // Blurred Background Image
+          // Background Image
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -29,10 +30,14 @@ class _SignInPageState extends State<SignInPage> {
               ),
             ),
           ),
+
+          // Blur Overlay
           BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
             child: Container(color: Colors.black.withOpacity(0.6)),
           ),
+
+          // Login Form
           Center(
             child: SingleChildScrollView(
               child: Padding(
@@ -60,24 +65,26 @@ class _SignInPageState extends State<SignInPage> {
                             ),
                           ),
                           const SizedBox(height: 32),
+
                           // Username Field
                           CupertinoTextField(
                             controller: _usernameController,
                             placeholder: 'Username',
                             placeholderStyle: const TextStyle(color: Colors.grey),
                             padding: const EdgeInsets.all(16),
+                            style: const TextStyle(color: Colors.white),
                             decoration: BoxDecoration(
                               color: Colors.black,
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(color: Colors.grey.shade300),
                             ),
-                            style: const TextStyle(color: Colors.white),
                             prefix: const Padding(
                               padding: EdgeInsets.only(left: 8.0),
                               child: Icon(CupertinoIcons.person, color: Colors.grey),
                             ),
                           ),
                           const SizedBox(height: 16),
+
                           // Password Field
                           CupertinoTextField(
                             controller: _passwordController,
@@ -114,7 +121,8 @@ class _SignInPageState extends State<SignInPage> {
                             ),
                           ),
                           const SizedBox(height: 24),
-                          // Sign In Button
+
+                          // Sign In Button (Inline Logic with Debugging)
                           CupertinoButton(
                             color: CupertinoColors.systemBlue,
                             borderRadius: BorderRadius.circular(10),
@@ -127,14 +135,48 @@ class _SignInPageState extends State<SignInPage> {
                                 color: Colors.white,
                               ),
                             ),
-                            onPressed: () {}, // Placeholder: Add your onPressed action here
+                            onPressed: () {
+                              final username = _usernameController.text;
+                              final password = _passwordController.text;
+
+                              print("Sign In button tapped");
+                              print("Username: $username, Password: $password");
+
+                              if (username.isEmpty || password.isEmpty) {
+                                print("Validation failed: Missing fields");
+
+                                showCupertinoDialog(
+                                  context: context,
+                                  builder: (context) => CupertinoAlertDialog(
+                                    title: const Text('Error'),
+                                    content: const Text('Please fill in all fields'),
+                                    actions: [
+                                      CupertinoDialogAction(
+                                        child: const Text('OK'),
+                                        onPressed: () => Navigator.pop(context),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                                return;
+                              }
+
+                              print("Validation passed. Navigating to HomePage");
+
+                              Navigator.pushReplacement(
+                                context,
+                                CupertinoPageRoute(
+                                  builder: (context) => const MyHomePage(),
+                                ),
+                              );
+                            },
                           ),
                           const SizedBox(height: 16),
+
                           // Register Row
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text("Don't have an account?", style: TextStyle(color: Colors.white)),
                               CupertinoButton(
                                 padding: const EdgeInsets.only(left: 4),
                                 child: const Text(
@@ -145,9 +187,11 @@ class _SignInPageState extends State<SignInPage> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(
+                                  Navigator.pushReplacement(
                                     context,
-                                    CupertinoPageRoute(builder: (context) => const RegisterPage()),
+                                    CupertinoPageRoute(
+                                      builder: (context) => const RegisterPage(),
+                                    ),
                                   );
                                 },
                               ),

@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Role Selection',
-      debugShowCheckedModeBanner: false, // 🔥 Removes debug label
+      title: 'BharatFlow',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.light,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
@@ -87,7 +87,7 @@ class RoleSelectionPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const UserPage()),
+                        MaterialPageRoute(builder: (context) => const SignInPage())
                     );
                   },
                 ),
@@ -99,3 +99,4 @@ class RoleSelectionPage extends StatelessWidget {
     );
   }
 }
+
