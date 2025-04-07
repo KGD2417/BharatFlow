@@ -41,9 +41,12 @@ dependencies:
   flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
+
   flutter_test:
     sdk: flutter
-
+  flutter_map: ^8.1.1
+  latlong2: ^0.9.1
+  flutter_rating_bar: ^4.0.1
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -56,6 +59,10 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - assets/images/map_bg.png
+
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

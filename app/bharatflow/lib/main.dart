@@ -1,3 +1,4 @@
+import 'package:bharatflow/pages/SignIn.dart';
 import 'package:flutter/material.dart';
 import 'pages/admin_page.dart';
 import 'pages/user_page.dart';
@@ -13,9 +14,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Role Selection',
+      title: 'BharatFlow',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme.copyWith(
+      theme: ThemeData(
+        brightness: Brightness.light,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
         cardTheme: CardTheme(
@@ -89,7 +91,7 @@ class RoleSelectionPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const UserPage()),
+                        MaterialPageRoute(builder: (context) => const SignInPage())
                     );
                   },
                 ),
@@ -101,3 +103,4 @@ class RoleSelectionPage extends StatelessWidget {
     );
   }
 }
+
