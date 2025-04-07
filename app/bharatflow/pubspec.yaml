@@ -36,6 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.8
   fl_chart: ^0.70.2
   universal_platform: ^1.1.0
+  flutter_map: ^8.1.1
+  latlong2: ^0.9.1
+  flutter_rating_bar: ^4.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
