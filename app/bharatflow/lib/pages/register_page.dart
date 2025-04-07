@@ -154,9 +154,9 @@ class _RegisterPageState extends State<RegisterPage> {
                               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
                             ),
                             onPressed: () {
-                              Navigator.pushReplacement(
+                              Navigator.push(
                                 context,
-                                CupertinoPageRoute(
+                                MaterialPageRoute(
                                   builder: (context) => const MyHomePage(),
                                 ),
                               );
