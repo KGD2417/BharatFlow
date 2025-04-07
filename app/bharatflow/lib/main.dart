@@ -2,8 +2,9 @@ import 'package:bharatflow/pages/SignIn.dart';
 import 'package:flutter/material.dart';
 import 'pages/admin_page.dart';
 import 'pages/user_page.dart';
-
+import 'theme/app_theme.dart';
 void main() {
+
   runApp(const MyApp());
 }
 
@@ -27,6 +28,8 @@ class MyApp extends StatelessWidget {
           shadowColor: Colors.black26,
         ),
       ),
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.dark,
       home: const RoleSelectionPage(),
     );
   }
@@ -69,7 +72,7 @@ class RoleSelectionPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const AdminPage()),
+                      MaterialPageRoute(builder: (context) => const AdminLoginPage()),
                     );
                   },
                 ),
