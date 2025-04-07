@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:bharatflow/widgets/sign_in_form.dart';
+import 'package:bharatflow/widgets/sign_in_form.dart'; // <-- wherever you save the widget
 
-class UserPage extends StatelessWidget {
-  const UserPage({super.key});
+class SignInPage extends StatelessWidget {
+  const SignInPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +27,7 @@ class UserPage extends StatelessWidget {
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(20),
-                child: SignInForm(
-                  showNavigation: false,
-                  onSubmit: (username, password) {
-                    print("Username: $username, Password: $password");
-                    // TODO: Add your custom behavior here
-                  },
-                ),
+                child: SignInForm(),
               ),
             ),
           ),
