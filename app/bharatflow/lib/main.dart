@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'pages/admin_page.dart';
 import 'pages/user_page.dart';
-
+import 'theme/app_theme.dart';
 void main() {
+
   runApp(const MyApp());
 }
 
@@ -13,9 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Role Selection',
-      debugShowCheckedModeBanner: false, // 🔥 Removes debug label
-      theme: ThemeData(
-        brightness: Brightness.light,
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.lightTheme.copyWith(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
         cardTheme: CardTheme(
@@ -26,6 +26,8 @@ class MyApp extends StatelessWidget {
           shadowColor: Colors.black26,
         ),
       ),
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.dark,
       home: const RoleSelectionPage(),
     );
   }
@@ -68,7 +70,7 @@ class RoleSelectionPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const AdminPage()),
+                      MaterialPageRoute(builder: (context) => const AdminLoginPage()),
                     );
                   },
                 ),
